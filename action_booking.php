@@ -40,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Simpan ke tabel reservasi
     $stmt = $conn->prepare("INSERT INTO reservasi (id_user, id_kamar, check_in, check_out, total_harga, status_pembayaran, created_at)
+                            VALUES (?, ?, ?, ?, ?, 'pending', NOW())");
     $stmt->execute([$id_user, $id_kamar, $check_in, $check_out, $total]);
 
     // Ambil ID reservasi terakhir
